@@ -11,7 +11,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="af306389-9738-494c-adec-08ac69d89974" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Art/kenney_fish-pack_2/PNG/Double/rock_a_outline.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/kenney_fish-pack_2/PNG/Double/rock_a_outline.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.PufferGo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PufferGo/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +22,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/EntryZone.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.tilemap@592c6ccaefe1/Editor/GridEditorUtility.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProblemsViewState">
@@ -111,7 +112,7 @@
       <workItem from="1784446085221" duration="52000" />
       <workItem from="1784446955149" duration="792000" />
       <workItem from="1784456400771" duration="20000" />
-      <workItem from="1784467059807" duration="1270000" />
+      <workItem from="1784467059807" duration="2594000" />
     </task>
     <servers />
   </component>
