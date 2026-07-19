@@ -19,7 +19,11 @@ namespace PufferGo.Effects
 
         private void HandleAirChanged(float air)
         {
-            if ((air / airShowable.AirTimer) < 0.5f && air != 0) return;
+            if ((air / airShowable.AirTimer) < 0.5f)
+            {
+                spriteRenderer.color = _baseColor;
+                return;
+            }
 
             spriteRenderer.color = Color.Lerp(_baseColor, _noAirColor, air / airShowable.AirTimer);
         }

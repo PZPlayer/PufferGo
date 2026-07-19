@@ -27,11 +27,13 @@ namespace PufferGo.Player
         [SerializeField] private float _jumpCooldown = 0.05f;
         [SerializeField] private float _airHoldTime = 3f;
         [SerializeField] private GameObject _partclsPool;
+        [SerializeField] private GameObject _aim;
         [SerializeField] private UnityEvent _onJumpOff;
         [SerializeField] private UnityEvent _onInhale;
         [SerializeField] private UnityEvent _onExhale;
 
         private Vector2 normalScale;
+        private Vector2 aimNormalScale;
         private Rigidbody2D rb;
         private bool buttonPresed;
         private bool isInflated;
@@ -47,13 +49,14 @@ namespace PufferGo.Player
             rb = GetComponent<Rigidbody2D>();
             normalDamping = rb.linearDamping;
             angularNormalDamping = rb.angularDamping;
+            aimNormalScale = _aim.transform.localScale;
         }
 
         private void Update()
         {
             if (isInflated)
             {
-                OnAirChanged?.Invoke(Time.time - lastTimeExhaled);
+                OnAirChanged?.Invoke(airHoldTimer);
                 airHoldTimer += Time.deltaTime;
 
                 if (airHoldTimer >= _airHoldTime)
@@ -73,17 +76,21 @@ namespace PufferGo.Player
 
             isInflated = true;
             OnScaleChanged?.Invoke(normalScale * _scaleMultiplayer);
+            _aim.transform.localScale = aimNormalScale / _scaleMultiplayer;
             rb.gravityScale = _gravityWhileInhaling;
             rb.linearDamping = normalDamping;
             rb.angularDamping = _angularDampingWhileInhaling;
         }
         private void Exhale()
         {
+            if (!isInflated) return;
+
             lastTimeExhaled = Time.time;
             isInflated = false;
             OnAirChanged?.Invoke(0);
             airHoldTimer = 0;
 
+            _aim.transform.localScale = aimNormalScale;
             _onExhale?.Invoke();
             OnScaleChanged?.Invoke(normalScale);
 
@@ -149,7 +156,6 @@ namespace PufferGo.Player
             }
 
             _onJumpOff?.Invoke();
-            Debug.Log(Time.time + " " + sumDiresction.normalized * _firstJumpOffPower + "  " + rb.linearVelocity.y);
             rb.AddForce(sumDiresction.normalized * _firstJumpOffPower, ForceMode2D.Impulse); // Это сделано для ощущения. Так как прыжок в гору не чувствуеться вообще
             if (sumDiresction != Vector2.zero) lastTimeJumped = Time.time;
         }
