@@ -17,6 +17,11 @@ public interface IAirShowable
     event Action<float> OnAirChanged;
 }
 
+public interface IPoolable
+{
+    GameObject GetObject();
+}
+
 public interface IShowScale
 {
     event Action<Vector2> OnScaleChanged;
