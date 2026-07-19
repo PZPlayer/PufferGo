@@ -29,6 +29,7 @@ namespace PufferGo.Player
 
             Time.timeScale = 1f;
             GameManager.MANAGER.RespawnPlayer();
+            GetComponent<Rigidbody2D>().linearVelocity = Vector3.zero;
             corutine = null;
         }
 

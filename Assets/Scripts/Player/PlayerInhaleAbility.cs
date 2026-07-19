@@ -119,6 +119,7 @@ namespace PufferGo.Player
                 Debug.DrawLine(collider.ClosestPoint(transform.position), collider.ClosestPoint(transform.position) + ((Vector2)transform.position - collider.ClosestPoint(transform.position)).normalized * _firstJumpOffPower, Color.yellow, 2);
             }
 
+            Debug.Log(Time.time + " " + sumDiresction.normalized * _firstJumpOffPower + "  " + rb.linearVelocity.y);
             rb.AddForce(sumDiresction.normalized * _firstJumpOffPower, ForceMode2D.Impulse); // Это сделано для ощущения. Так как прыжок в гору не чувствуеться вообще
             if (sumDiresction != Vector2.zero) lastTimeJumped = Time.time;
         }
